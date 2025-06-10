@@ -2,6 +2,8 @@
 
 This project is a simple **Streamlit application** that simulates a SaaS (Software-as-a-Service) financial model over a defined time horizon.
 
+🔗 **Live App**: [Click here to try it out](https://saas-financial-model-app-9zu5uw8menbg3lydju3xs7.streamlit.app/)
+
 The app allows users to input assumptions such as:
 - Starting customer count
 - Monthly new customers
