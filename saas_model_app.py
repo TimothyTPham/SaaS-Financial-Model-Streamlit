@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import math
 
 # Title and description
 st.title("SaaS Financial Model")
@@ -24,6 +25,9 @@ data = []
 for month in range(1, months + 1):
     churned_customers = current_customers * monthly_churn_rate
     end_customers = current_customers - churned_customers + monthly_new_customers
+
+    churned_customers = math.ceil(churned_customers)
+    end_customers = math.ceil(end_customers)
 
     mrr = end_customers * arpu
     revenue = mrr
@@ -65,3 +69,4 @@ st.line_chart(df.set_index("Month")["MRR ($)"])
 # Optional: Export
 csv = df.to_csv(index=False).encode('utf-8')
 st.download_button("Download CSV", csv, "saas_model.csv", "text/csv")
+
