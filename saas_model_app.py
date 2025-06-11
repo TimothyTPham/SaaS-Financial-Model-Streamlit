@@ -25,7 +25,8 @@ for month in range(1, months + 1):
     churned_customers = current_customers * monthly_churn_rate
     end_customers = current_customers - churned_customers + monthly_new_customers
 
-    mrr = end_customers * arpu
+    rounded_end_customers = round(end_customers)
+    mrr = rounded_end_customers * arpu
     revenue = mrr
     gross_profit = revenue * gross_margin
     customer_acquisition_cost = monthly_new_customers * cac
@@ -46,7 +47,7 @@ for month in range(1, months + 1):
         "CAC Payback Period (Months)": cac_payback_period_months
     })
 
-    current_customers = end_customers
+    current_customers = rounded_end_customers
 
 # Display results
 df = pd.DataFrame(data)
