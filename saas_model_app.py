@@ -34,10 +34,10 @@ for month in range(1, months + 1):
 
     data.append({
         "Month": month,
-        "Starting Customers": round(current_customers),
-        "Churned Customers": round(churned_customers),
+        "Starting Customers": current_customers,
+        "Churned Customers": churned_customers,
         "New Customers": monthly_new_customers,
-        "Ending Customers": round(end_customers),
+        "Ending Customers": end_customers,
         "MRR ($)": mrr,
         "Revenue ($)": revenue,
         "Gross Profit ($)": gross_profit,
@@ -51,6 +51,10 @@ for month in range(1, months + 1):
 # Display results
 df = pd.DataFrame(data)
 st.dataframe(df.style.format({
+    "Starting Customers": "{:,.0f}",
+    "Churned Customers": "{:,.0f}",
+    "New Customers": "{:,.0f}",
+    "Ending Customers": "{:,.0f}",
     "MRR ($)": "${:,.2f}",
     "Revenue ($)": "${:,.2f}",
     "Gross Profit ($)": "${:,.2f}",
