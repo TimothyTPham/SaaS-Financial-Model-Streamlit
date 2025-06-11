@@ -5,7 +5,7 @@ import numpy as np
 # Title and description
 st.title("SaaS Financial Model")
 st.write("""
-This is a simple SaaS financial model simulator. Adjust inputs to project customer growth, revenue, and key SaaS metrics like MRR, LTV, and CAC payback period.
+This is a simple SaaS financial model simulator. Adjust inputs to project customer growth, revenue, and key SaaS metrics like MRR, LTV, CAC payback period, and ARR.
 """)
 
 # Sidebar inputs
@@ -27,8 +27,8 @@ for month in range(1, months + 1):
 
     rounded_end_customers = round(end_customers)
     mrr = rounded_end_customers * arpu
-    revenue = mrr
-    gross_profit = revenue * gross_margin
+    arr = mrr * 12
+    gross_profit = arr * gross_margin
     customer_acquisition_cost = monthly_new_customers * cac
     ltv = (arpu * gross_margin) / monthly_churn_rate if monthly_churn_rate != 0 else np.nan
     cac_payback_period_months = cac / (arpu * gross_margin) if arpu * gross_margin != 0 else np.nan
@@ -40,7 +40,7 @@ for month in range(1, months + 1):
         "New Customers": monthly_new_customers,
         "Ending Customers": end_customers,
         "MRR ($)": mrr,
-        "Revenue ($)": revenue,
+        "ARR ($)": arr,
         "Gross Profit ($)": gross_profit,
         "Customer Acquisition Cost ($)": customer_acquisition_cost,
         "LTV ($)": ltv,
@@ -57,7 +57,7 @@ st.dataframe(df.style.format({
     "New Customers": "{:,.0f}",
     "Ending Customers": "{:,.0f}",
     "MRR ($)": "${:,.2f}",
-    "Revenue ($)": "${:,.2f}",
+    "ARR ($)": "${:,.2f}",
     "Gross Profit ($)": "${:,.2f}",
     "Customer Acquisition Cost ($)": "${:,.2f}",
     "LTV ($)": "${:,.2f}",
