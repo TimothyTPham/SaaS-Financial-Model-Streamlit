@@ -70,3 +70,12 @@ st.line_chart(df.set_index("Month")["MRR ($)"])
 # Optional: Export
 csv = df.to_csv(index=False).encode('utf-8')
 st.download_button("Download CSV", csv, "saas_model.csv", "text/csv")
+
+# --- Footer ---
+st.markdown("---")
+st.markdown(
+    "<div style='text-align: center; font-size: 0.9em; color: gray;'>"
+    "Built by <a href='https://www.linkedin.com/in/timphamtx' target='_blank'>Tim Pham</a>"
+    "</div>",
+    unsafe_allow_html=True
+)
